@@ -1,117 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EdFlare – Class 10 AI Buddy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background-color: #f9f9ff;
-      color: #333;
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      color: #3b3b98;
-    }
-    .section {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #1e3799;
-    }
-    .subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .subject-box {
-      background: #eef1f9;
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      font-weight: 600;
-      color: #3b3b98;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-    }
-    .video iframe {
-      width: 100%;
-      height: 315px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
-    .notes a, .chatbot-btn, .textbook-btn, .other-btn {
-      display: block;
-      margin: 10px 0;
-      padding: 12px;
-      background-color: #3b3b98;
-      color: white;
-      text-align: center;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .notes a:hover, .chatbot-btn:hover, .textbook-btn:hover, .other-btn:hover {
-      background-color: #1e3799;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EdFlare - Learn Smarter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Header Section -->
   <header>
-    <h1>Welcome to EdFlare 🚀</h1>
-    <p>Your Class 10 Smart AI Study Partner</p>
+    <h1>Welcome to EdFlare</h1>
+    <p>Your smart learning companion for Class 10</p>
   </header>
 
-  <div class="section">
-    <h2>📚 Class 10 Subjects</h2>
-    <div class="subjects">
-      <div class="subject-box">Science</div>
-      <div class="subject-box">Maths</div>
-      <div class="subject-box">English</div>
-      <div class="subject-box">Social Science</div>
-      <div class="subject-box">Hindi</div>
-      <div class="subject-box">Sanskrit</div>
+  <!-- Navigation Buttons -->
+  <section class="navigation">
+    <div class="nav-container">
+      <a href="notes.html" class="nav-button">📚 Download Notes</a>
+      <a href="quiz.html" class="nav-button">🧠 Practice Quizzes</a>
+      <a href="videos.html" class="nav-button">🎥 Watch Videos</a>
+      <a href="chatbot.html" class="nav-button">🤖 Chat with EdFlare AI</a>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <h2>🤖 EdFlare AI Tools</h2>
-    <a class="chatbot-btn" href="chatbot.html">🧠 Open AI Chatbot</a>
-    <a class="textbook-btn" href="#">📘 View NCERT Textbooks</a>
-    <a class="notes-btn" href="#notes">📝 Download Notes</a>
-    <a class="other-btn" href="#">📊 Explore Practice & Quizzes</a>
-  </div>
+  <!-- Introduction Section -->
+  <section class="intro">
+    <h2>Why EdFlare?</h2>
+    <p>Struggling with your Class 10 subjects? EdFlare is here to make learning easy, fun, and personalized. Whether it's notes, quizzes, videos, or doubts – everything is just a click away!</p>
+  </section>
 
-  <div class="section notes" id="notes">
-    <h2>📄 Download Notes</h2>
-    <a href="science-notes.pdf" download>📥 Science Notes</a>
-    <a href="maths-notes.pdf" download>📥 Maths Notes</a>
-    <a href="english-notes.pdf" download>📥 English Notes</a>
-  </div>
+  <!-- Promo Video Section -->
+  <section class="promo-video">
+    <h2>🎬 Watch How EdFlare Works</h2>
+    <video controls width="100%">
+      <source src="promo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
 
-  <!-- Moved Launch Video Section to Bottom -->
-  <div class="section video">
-    <h2>🎬 Launch Reel</h2>
-    <iframe src="https://www.youtube.com/embed/g03JS7ZACIA" frameborder="0" allowfullscreen></iframe>
-    <p>⬆️ Watch Our Launch Short</p>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 EdFlare. Built with ❤️ for Class 10 students.</p>
+  </footer>
+
 </body>
 </html>
