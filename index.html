@@ -2,39 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EdFlare - Your Smart Study Buddy</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdFlare – Class 10 AI Buddy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f9f9ff;
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #3b3b98;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #1e3799;
+    }
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .subject-box {
+      background: #eef1f9;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      color: #3b3b98;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .video iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .notes a, .chatbot-btn, .textbook-btn, .other-btn {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background-color: #3b3b98;
+      color: white;
+      text-align: center;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .notes a:hover, .chatbot-btn:hover, .textbook-btn:hover, .other-btn:hover {
+      background-color: #1e3799;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Welcome to EdFlare 🚀</h1>
-    <p>Your Smart Study Buddy for Class 10 Students 📘</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="notes.html">Download Notes</a>
-      <a href="chatbot.html">Chat with EdFlare AI</a>
-      <a href="planner.html">Study Planner</a>
-    </nav>
+    <p>Your Class 10 Smart AI Study Partner</p>
   </header>
 
-  <section id="features">
-    <h2>Why EdFlare?</h2>
-    <ul>
-      <li>📚 All Class 10 Subjects Covered</li>
-      <li>🤖 Doubt-Clearing AI Chatbot</li>
-      <li>🎯 Personalized Study Planner</li>
-      <li>🎥 Helpful YouTube Video Suggestions</li>
-    </ul>
-  </section>
+  <div class="section">
+    <h2>📚 Class 10 Subjects</h2>
+    <div class="subjects">
+      <div class="subject-box">Science</div>
+      <div class="subject-box">Maths</div>
+      <div class="subject-box">English</div>
+      <div class="subject-box">Social Science</div>
+      <div class="subject-box">Hindi</div>
+      <div class="subject-box">Sanskrit</div>
+    </div>
+  </div>
 
-  <section id="demo-video">
-    <h2>🎬 Watch How EdFlare Works</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-  </section>
+  <div class="section">
+    <h2>🤖 EdFlare AI Tools</h2>
+    <a class="chatbot-btn" href="chatbot.html">🧠 Open AI Chatbot</a>
+    <a class="textbook-btn" href="#">📘 View NCERT Textbooks</a>
+    <a class="notes-btn" href="#notes">📝 Download Notes</a>
+    <a class="other-btn" href="#">📊 Explore Practice & Quizzes</a>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 EdFlare. All rights reserved.</p>
-  </footer>
+  <div class="section notes" id="notes">
+    <h2>📄 Download Notes</h2>
+    <a href="science-notes.pdf" download>📥 Science Notes</a>
+    <a href="maths-notes.pdf" download>📥 Maths Notes</a>
+    <a href="english-notes.pdf" download>📥 English Notes</a>
+  </div>
+
+  <!-- Moved Launch Video Section to Bottom -->
+  <div class="section video">
+    <h2>🎬 Launch Reel</h2>
+    <iframe src="https://www.youtube.com/embed/g03JS7ZACIA" frameborder="0" allowfullscreen></iframe>
+    <p>⬆️ Watch Our Launch Short</p>
+  </div>
 </body>
 </html>
