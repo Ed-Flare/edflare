@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EdFlare AI – Ask Anything!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f7;
+      padding: 20px;
+    }
+    #chatLog {
+      background: white;
+      border: 1px solid #ccc;
+      height: 400px;
+      overflow-y: scroll;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+    #userInput {
+      width: 75%;
+      padding: 10px;
+    }
+    #sendBtn {
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>EdFlare AI – Ask Anything!</h2>
+
+  <div id="chatLog"></div>
+
+  <input type="text" id="userInput" placeholder="Type your question..." />
+  <button id="sendBtn" onclick="talk()">Send</button>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>
