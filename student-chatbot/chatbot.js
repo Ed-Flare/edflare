@@ -1,49 +1,48 @@
 const apiKey = "sk-89674c0828754c6d9d0bb96721042a4a"; // Replace with your actual key
-const messagesContainer = document.getElementById("messages");
+const apiUrl = "https://api.deepseek.com/openai/v1/chat/completions";
 
 async function sendMessage() {
-  const userInput = document.getElementById("userInput");
-  const message = userInput.value.trim();
-  if (!message) return;
+  const userInput = document.getElementById("userInput").value;
+  if (!userInput) return;
 
-  // Show user message
-  appendMessage("You", message, "user");
-  userInput.value = "";
+  appendMessage("user", userInput);
+  document.getElementById("userInput").value = "";
+
+  appendMessage("bot", "Typing...");
 
   try {
-    const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         model: "deepseek-chat",
-        messages: [
-          { role: "system", content: "You are EdFlare, a helpful Class 10 assistant." },
-          { role: "user", content: message }
-        ]
+        messages: [{ role: "user", content: userInput }]
       })
     });
 
     const data = await response.json();
-
-    if (data.choices && data.choices.length > 0) {
-      const reply = data.choices[0].message.content;
-      appendMessage("EdFlare", reply, "bot");
-    } else {
-      appendMessage("EdFlare", "❌ Error: Could not get a reply.", "bot");
-    }
+    const reply = data.choices?.[0]?.message?.content || "❌ Could not get a reply.";
+    
+    updateLastBotMessage(reply);
   } catch (error) {
-    console.error(error);
-    appendMessage("EdFlare", "❌ Error: Something went wrong.", "bot");
+    updateLastBotMessage("❌ Error: " + error.message);
   }
 }
 
-function appendMessage(sender, text, className) {
-  const msgDiv = document.createElement("div");
-  msgDiv.className = `message ${className}`;
-  msgDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
-  messagesContainer.appendChild(msgDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+function appendMessage(sender, text) {
+  const messagesDiv = document.getElementById("messages");
+  const div = document.createElement("div");
+  div.classList.add("message", sender);
+  div.textContent = `${sender === "user" ? "👤 You" : "🤖 EdFlare"}: ${text}`;
+  messagesDiv.appendChild(div);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function updateLastBotMessage(newText) {
+  const messages = document.querySelectorAll(".bot");
+  const last = messages[messages.length - 1];
+  if (last) last.textContent = "🤖 EdFlare: " + newText;
 }
