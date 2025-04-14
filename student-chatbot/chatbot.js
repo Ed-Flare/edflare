@@ -1,5 +1,5 @@
-const apiKey = "sk-89674c0828754c6d9d0bb96721042a4a"; // Replace with your actual key
-const apiUrl = "https://api.deepseek.com/openai/v1/chat/completions";
+const apiKey = "sk-89674c0828754c6d9d0bb96721042a4a"; // Replace with actual key
+const apiUrl = "https://api.deepseek.com/v1/chat/completions";
 
 async function sendMessage() {
   const userInput = document.getElementById("userInput").value;
