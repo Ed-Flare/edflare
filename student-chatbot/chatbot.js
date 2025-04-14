@@ -1,35 +1,34 @@
-function talk() {
-  const userInput = document.getElementById('userInput').value;
-  const chatLog = document.getElementById('chatLog');
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
 
-  if (userInput.trim() === '') return;
+  // Show user message
+  const messagesDiv = document.getElementById("messages");
+  messagesDiv.innerHTML += `<div class="message user">👤 You: ${message}</div>`;
+  input.value = "";
 
-  const userMessage = document.createElement('div');
-  userMessage.innerHTML = `<strong>👤 You:</strong> ${userInput}`;
-  chatLog.appendChild(userMessage);
+  // Call DeepSeek API
+  const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer sk-89674c0828754c6d9d0bb96721042a4a" // Replace this line below
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat", // or another model name if required
+      messages: [{ role: "user", content: message }]
+    })
+  });
 
-  let response = '';
-  const lowerCaseInput = userInput.toLowerCase();
+  const data = await response.json();
 
-  if (lowerCaseInput.includes('light')) {
-    response = '💡 Light travels in a straight line and reflects from surfaces.';
-  } else if (lowerCaseInput.includes('ohm')) {
-    response = '🔌 Ohm\'s Law: V = IR, where V is voltage, I is current, and R is resistance.';
-  } else if (lowerCaseInput.includes('hi') || lowerCaseInput.includes('hello')) {
-    response = '👋 Hello! I\'m EdFlare AI. Ask me anything about Class 10.';
+  if (data.choices && data.choices.length > 0) {
+    const reply = data.choices[0].message.content;
+    messagesDiv.innerHTML += `<div class="message bot">🤖 EdFlare: ${reply}</div>`;
   } else {
-    response = '🤔 I\'m still learning! Try asking a Class 10 topic like "What is a verb?" or "Explain Ohm\'s law".';
+    messagesDiv.innerHTML += `<div class="message bot">❌ Error: Could not get a reply.</div>`;
   }
 
-  const botMessage = document.createElement('div');
-  botMessage.innerHTML = `<strong>🤖 EdFlare:</strong> ${response}`;
-  chatLog.appendChild(botMessage);
-
-  // Remove emojis from speech output
-  const cleanResponse = response.replace(/[\u{1F300}-\u{1F6FF}|\u{2600}-\u{26FF}|\u{2700}-\u{27BF}]/gu, '');
-  const speech = new SpeechSynthesisUtterance(cleanResponse);
-  window.speechSynthesis.speak(speech);
-
-  document.getElementById('userInput').value = '';
-  chatLog.scrollTop = chatLog.scrollHeight;
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
